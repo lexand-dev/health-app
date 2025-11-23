@@ -1,0 +1,5 @@
+packages:
+  - apps/*
+  - packages/*
+catalog:
+  tailwind-merge: ^3.3.1

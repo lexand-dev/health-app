@@ -1,0 +1,29 @@
+{
+  "name": "health-app",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare": "husky",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:native": "turbo -F native dev",
+    "dev:web": "turbo -F web dev",
+    "dev:server": "turbo -F @health-app/backend dev",
+    "dev:setup": "turbo -F @health-app/backend dev:setup"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "turbo": "^2.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": ""
+  },
+  "packageManager": "pnpm@10.14.0"
+}
