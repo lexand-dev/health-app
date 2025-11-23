@@ -44,12 +44,6 @@ Open [http://localhost:3001](http://localhost:3001) in your browser to see the w
 Use the Expo Go app to run the mobile application.
 Your app will connect to the Convex cloud backend automatically.
 
-
-
-
-
-
-
 ## Project Structure
 
 ```
@@ -61,6 +55,29 @@ health-app/
 │   ├── backend/     # Convex backend functions and schema
 │   │   ├── convex/    # Convex functions and schema
 │   │   └── .env.local # Convex environment variables
+```
+
+```
+health-app/ (Root)
+├── /apps
+│   ├── /mobile-app (React Native - Expo) -> Responsable: Lexand/Jorje
+│   │   ├── /screens (Onboarding, Dashboard, Camera)
+│   │   └── /services (HealthKit Sync)
+│   │
+│   └── /web-dashboard (Next.js - Opcional para Demo) -> Responsable: Sergio
+│       └── (Vista para el Médico/Emergencia)
+│
+├── /packages
+│   ├── /fhir-types (Definiciones TS de los esquemas FHIR)
+│   └── /ui-kit (Botones, Alertas Rojas, Modo Oscuro [cite: 144])
+│
+├── /services (Backend - Python/FastAPI) -> Responsable: Bruno/Lucas
+│   ├── /api (Endpoints REST)
+│   ├── /ai-engine (Lógica de GPT-4o y Prompts de VLM)
+│   ├── /guardian (Lógica de Triaje Manchester y Twilio)
+│   └── /db (Conexión MongoDB)
+│
+└── /docs (Pitch, Assets, Diagramas)
 ```
 
 ## Available Scripts
