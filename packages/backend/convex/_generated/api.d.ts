@@ -11,8 +11,14 @@
 import type * as healthCheck from "../healthCheck.js";
 import type * as lib_extractTextContent from "../lib/extractTextContent.js";
 import type * as privateData from "../privateData.js";
+import type * as public_contactSessions from "../public/contactSessions.js";
+import type * as public_conversations from "../public/conversations.js";
 import type * as public_files from "../public/files.js";
+import type * as public_messages from "../public/messages.js";
+import type * as system_ai_agents_healthAgent from "../system/ai/agents/healthAgent.js";
 import type * as system_ai_rag from "../system/ai/rag.js";
+import type * as system_contactSessions from "../system/contactSessions.js";
+import type * as system_conversations from "../system/conversations.js";
 import type * as todos from "../todos.js";
 
 import type {
@@ -25,8 +31,14 @@ declare const fullApi: ApiFromModules<{
   healthCheck: typeof healthCheck;
   "lib/extractTextContent": typeof lib_extractTextContent;
   privateData: typeof privateData;
+  "public/contactSessions": typeof public_contactSessions;
+  "public/conversations": typeof public_conversations;
   "public/files": typeof public_files;
+  "public/messages": typeof public_messages;
+  "system/ai/agents/healthAgent": typeof system_ai_agents_healthAgent;
   "system/ai/rag": typeof system_ai_rag;
+  "system/contactSessions": typeof system_contactSessions;
+  "system/conversations": typeof system_conversations;
   todos: typeof todos;
 }>;
 
