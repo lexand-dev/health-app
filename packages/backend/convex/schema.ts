@@ -53,18 +53,14 @@ export default defineSchema({
   }),
   conversations: defineTable({
     threadId: v.string(),
-    organizationId: v.string(),
+    userId: v.string(),
     contactSessionId: v.id("contactSessions"),
-    status: v.union(
-      v.literal("open"),
-      v.literal("closed"),
-      v.literal("pending")
-    )
+    status: v.union(v.literal("open"), v.literal("closed"), v.literal("scaled"))
   })
-    .index("by_organization_id", ["organizationId"])
+    .index("by_user_id", ["userId"])
     .index("by_contact_session_id", ["contactSessionId"])
     .index("by_thread_id", ["threadId"])
-    .index("by_status_and_organization_id", ["status", "organizationId"]),
+    .index("by_status_and_user_id", ["status", "userId"]),
   contactSessions: defineTable({
     name: v.string(),
     email: v.string(),
