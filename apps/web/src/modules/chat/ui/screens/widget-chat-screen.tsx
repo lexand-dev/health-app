@@ -47,25 +47,25 @@ const formSchema = z.object({
 });
 
 export const WidgetChatScreen = () => {
-  const setScreen = useSetAtom(screenAtom);
-  const setConversationId = useSetAtom(conversationIdAtom);
-
-  const conversationId = useAtomValue(conversationIdAtom);
   const userId = useAtomValue(userIdAtom);
   const contactSessionId = useAtomValue(
     contactSessionIdAtomFamily(userId || "")
   );
 
-  const onBack = () => {
-    setConversationId(null);
-    setScreen("selection");
-  };
+  /*   const onBack = () => {
+    setScreen("");
+  }; */
+
+  const conversations = useQuery(
+    api.public.conversations.getMany,
+    contactSessionId ? { contactSessionId } : "skip"
+  );
 
   const conversation = useQuery(
     api.public.conversations.getOne,
-    conversationId && contactSessionId
+    conversations?.[0]?._id && contactSessionId
       ? {
-          conversationId,
+          conversationId: conversations[0]._id,
           contactSessionId
         }
       : "skip"
@@ -115,9 +115,9 @@ export const WidgetChatScreen = () => {
     <>
       <WidgetHeader className="flex items-center justify-between">
         <div className="flex items-center gap-x-2">
-          <Button onClick={onBack} size="icon" variant="transparent">
+          {/* <Button onClick={onBack} size="icon" variant="transparent">
             <ArrowLeftIcon />
-          </Button>
+          </Button> */}
           <p>Chat</p>
         </div>
         <Button size="icon" variant="transparent">

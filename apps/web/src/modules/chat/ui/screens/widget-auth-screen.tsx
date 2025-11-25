@@ -71,7 +71,7 @@ export const WidgetAuthScreen = () => {
     });
 
     setContactSessionId(contactSessionId);
-    setScreen("selection");
+    setScreen("chat"); // selection
   };
 
   return (

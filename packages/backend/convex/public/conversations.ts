@@ -74,3 +74,32 @@ export const create = mutation({
     return conversationId;
   }
 });
+
+export const getMany = query({
+  args: {
+    contactSessionId: v.id("contactSessions")
+  },
+  handler: async (ctx, args) => {
+    const session = await ctx.db.get(args.contactSessionId);
+
+    if (!session) {
+      throw new ConvexError({
+        code: "UNAUTHORIZED",
+        message: "Invalid session"
+      });
+    }
+
+    const conversations = await ctx.db
+      .query("conversations")
+      .withIndex("by_contact_session_id", (q) =>
+        q.eq("contactSessionId", args.contactSessionId)
+      )
+      .collect();
+
+    return conversations.map((conversation) => ({
+      _id: conversation._id,
+      status: conversation.status,
+      threadId: conversation.threadId
+    }));
+  }
+});

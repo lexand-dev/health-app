@@ -21,7 +21,7 @@ export const WidgetView = ({ userId }: Props) => {
     error: <WidgetErrorScreen />,
     auth: <WidgetAuthScreen />,
     voice: <p>TODO: Voice</p>,
-    selection: <WidgetSelectionScreen />,
+    // selection: <WidgetSelectionScreen />,
     chat: <WidgetChatScreen />,
     contact: <p>TODO: Contact</p>
   };

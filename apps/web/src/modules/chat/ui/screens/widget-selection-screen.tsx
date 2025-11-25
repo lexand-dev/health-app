@@ -10,7 +10,7 @@ import {
   userIdAtom,
   screenAtom
 } from "../../atoms/widget-atoms";
-import { useMutation } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { useState } from "react";
 import { WidgetFooter } from "../components/widget-footer";
 import { Button } from "@health-app/ui/components/button";
@@ -21,12 +21,23 @@ export const WidgetSelectionScreen = () => {
   const setErrorMessage = useSetAtom(errorMessageAtom);
   const setConversationId = useSetAtom(conversationIdAtom);
 
+  const conversationId = useAtomValue(conversationIdAtom);
   const userId = useAtomValue(userIdAtom);
   const contactSessionId = useAtomValue(
     contactSessionIdAtomFamily(userId || "")
   );
 
   const createConversation = useMutation(api.public.conversations.create);
+  const conversation = useQuery(
+    api.public.conversations.getOne,
+    conversationId && contactSessionId
+      ? {
+          conversationId,
+          contactSessionId
+        }
+      : "skip"
+  );
+
   const [isPending, setIsPending] = useState(false);
 
   const handleNewConversation = async () => {
@@ -38,6 +49,12 @@ export const WidgetSelectionScreen = () => {
 
     if (!contactSessionId) {
       setScreen("auth");
+      return;
+    }
+
+    if (conversation && conversation?.threadId) {
+      setScreen("chat");
+      setConversationId(conversation._id);
       return;
     }
 
@@ -74,7 +91,7 @@ export const WidgetSelectionScreen = () => {
         >
           <div className="flex items-center gap-x-2">
             <MessageSquareTextIcon className="size-4" />
-            <span>Start chat</span>
+            <span>Start chatdd</span>
           </div>
           <ChevronRightIcon />
         </Button>

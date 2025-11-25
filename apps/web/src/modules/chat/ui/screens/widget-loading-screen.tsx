@@ -112,7 +112,7 @@ export const WidgetLoadingScreen = ({
     }
 
     const hasValidSession = contactSessionId && sessionValid;
-    setScreen(hasValidSession ? "selection" : "auth");
+    setScreen(hasValidSession ? "chat" : "auth");
   }, [step, contactSessionId, sessionValid, setScreen]);
 
   return (
