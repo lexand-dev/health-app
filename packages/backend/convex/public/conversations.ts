@@ -43,7 +43,7 @@ export const getOne = query({
   }
 });
 
-export const createThread = mutation({
+export const create = mutation({
   args: { userId: v.string(), contactSessionId: v.id("contactSessions") },
   handler: async (ctx, args) => {
     const session = await ctx.db.get(args.contactSessionId);

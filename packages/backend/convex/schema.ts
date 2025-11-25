@@ -64,7 +64,7 @@ export default defineSchema({
   contactSessions: defineTable({
     name: v.string(),
     email: v.string(),
-    organizationId: v.string(),
+    userId: v.string(),
     metadata: v.optional(
       v.object({
         userAgent: v.optional(v.string()),
@@ -81,5 +81,5 @@ export default defineSchema({
         currentUrl: v.optional(v.string())
       })
     )
-  }).index("by_organization_id", ["organizationId"])
+  }).index("by_user_id", ["userId"])
 });

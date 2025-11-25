@@ -1,0 +1,14 @@
+{
+  "extends": "@health-app/config/react-library.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["DOM", "ESNext"],
+    "baseUrl": ".",
+    "paths": {
+      "@health-app/ui/*": ["./src/*"]
+    },
+    "outDir": "dist"
+  },
+  "include": ["src", "turbo"],
+  "exclude": ["node_modules", "dist"]
+}
