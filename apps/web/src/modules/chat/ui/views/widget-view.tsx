@@ -28,7 +28,7 @@ export const WidgetView = ({ userId }: Props) => {
 
   return (
     // TODO: Confirm whether or not "min-h-screen" and "min-w-screen" is needed
-    <main className="min-h-screen min-w-2xl flex h-full w-full flex-col overflow-hidden rounded-xl border bg-muted">
+    <main className="min-h-screen w-[480px] flex h-full flex-col overflow-hidden rounded-xl border bg-muted">
       {screenComponents[screen]}
     </main>
   );
