@@ -13,6 +13,11 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "convex": "^1.25.4"
+    "@ai-sdk/openai": "^2.0.72",
+    "@convex-dev/agent": "^0.3.0",
+    "@convex-dev/rag": "^0.6.1",
+    "ai": "^5.0.101",
+    "convex": "^1.25.4",
+    "convex-helpers": "^0.1.105"
   }
 }
